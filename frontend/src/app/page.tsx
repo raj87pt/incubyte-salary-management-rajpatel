@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { Button, Alert, message } from "antd";
+import { Button, Alert, message, Tag } from "antd";
 import {
   TeamOutlined,
   UserAddOutlined,
   DownloadOutlined,
   ReloadOutlined,
+  ThunderboltOutlined,
 } from "@ant-design/icons";
 
 import { api } from "@/lib/api";
@@ -92,7 +93,7 @@ export default function DashboardPage() {
     <AppLayout>
       <div className={styles.dashboardContainer}>
         {hasAnyError && (
-          <div style={{ marginBottom: 8 }}>
+          <div style={{ marginBottom: 12 }}>
             <Alert
               type="error"
               showIcon
@@ -103,53 +104,60 @@ export default function DashboardPage() {
                   Retry Sync
                 </Button>
               }
-              style={{ borderRadius: 10 }}
+              style={{ borderRadius: 12 }}
             />
           </div>
         )}
 
-        {/* Top Header Bar */}
-        <div className={styles.topBar}>
-          <div className={styles.titleArea}>
+        {/* Executive Sub-Header Command Bar */}
+        <div className={styles.commandBar}>
+          <div className={styles.commandLeft}>
+            <div className={styles.breadcrumbTag}>
+              <span className={styles.dotIndicator} /> ACME Global Human Resources · Total Rewards
+            </div>
             <h1 className={styles.mainTitle}>Compensation & Headcount Analytics</h1>
             <p className={styles.subtitle}>
-              Global overview of how ACME org compensates its 10,000 employees across 10 countries
+              Real-time strategic payroll intelligence for 10,000 employees across 10 international jurisdictions
             </p>
           </div>
 
-          <div className={styles.actionButtons}>
+          <div className={styles.commandRight}>
             <Button
               icon={<ReloadOutlined />}
-              onClick={() => refetchMetrics()}
+              onClick={() => handleRefetchAll()}
+              className={styles.secondaryBtn}
             >
               Refresh
             </Button>
             <Button
               icon={<DownloadOutlined />}
               onClick={handleExportCsv}
+              className={styles.secondaryBtn}
             >
               Export Payroll CSV
+            </Button>
+            <Button
+              icon={<TeamOutlined />}
+              onClick={() => router.push("/employees")}
+              className={styles.secondaryBtn}
+            >
+              View Directory
             </Button>
             <Button
               type="primary"
               icon={<UserAddOutlined />}
               onClick={() => setIsAddModalOpen(true)}
+              className={styles.primaryBtn}
             >
               Add Employee
-            </Button>
-            <Button
-              icon={<TeamOutlined />}
-              onClick={() => router.push("/employees")}
-            >
-              View Directory
             </Button>
           </div>
         </div>
 
-        {/* KPI Summary Cards */}
+        {/* Executive Bento Grid */}
         <KPICards metrics={metrics} loading={loadingMetrics} />
 
-        {/* Charts Grid */}
+        {/* Middle Analytics Grid */}
         <div className={styles.chartsRow}>
           <DepartmentAnalytics data={deptStats} loading={loadingDept} />
           <SalaryHistogram
@@ -159,7 +167,7 @@ export default function DashboardPage() {
           />
         </div>
 
-        {/* Geographic Breakdown */}
+        {/* Geographic Breakdown Section */}
         <div className={styles.fullRow}>
           <CountryAnalytics data={countryStats} loading={loadingCountry} />
         </div>

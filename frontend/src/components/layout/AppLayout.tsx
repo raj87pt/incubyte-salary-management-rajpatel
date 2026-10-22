@@ -2,18 +2,18 @@
 
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Layout, Menu, Avatar, Badge } from "antd";
+import { Layout, Avatar, Badge, Button } from "antd";
 import {
   DashboardOutlined,
   TeamOutlined,
   CloudUploadOutlined,
   UserOutlined,
+  GlobalOutlined,
 } from "@ant-design/icons";
 
-import { useSidebar } from "@/app/providers";
 import styles from "./AppLayout.module.scss";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -22,148 +22,123 @@ interface AppLayoutProps {
 export default function AppLayout({ children }: AppLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const { collapsed, setCollapsed } = useSidebar();
 
-  const menuItems = [
+  const navItems = [
     {
       key: "/",
-      icon: <DashboardOutlined className={styles.menuIcon} />,
-      label: "Compensation Dashboard",
+      icon: <DashboardOutlined />,
+      label: "Dashboard",
+      description: "Compensation Overview",
     },
     {
       key: "/employees",
-      icon: <TeamOutlined className={styles.menuIcon} />,
-      label: "Employee Directory",
+      icon: <TeamOutlined />,
+      label: "Directory",
+      description: "10,000 Employees",
     },
     {
       key: "/import-export",
-      icon: <CloudUploadOutlined className={styles.menuIcon} />,
-      label: "Bulk Import / Export",
+      icon: <CloudUploadOutlined />,
+      label: "Data Hub",
+      description: "CSV Import & Export",
     },
   ];
-
-  const handleMenuClick = ({ key }: { key: string }) => {
-    router.push(key);
-  };
 
   const selectedKey = pathname === "/" ? "/" : `/${pathname.split("/")[1]}`;
 
   return (
     <Layout className={styles.layoutWrapper}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-        width={270}
-        collapsedWidth={80}
-        className={styles.sider}
-      >
-        <div
-          className={`${styles.brandLogo} ${
-            collapsed ? styles.brandLogoCollapsed : ""
-          }`}
-        >
-          <div className={styles.logoIcon}>
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2L2 7L12 12L22 7L12 2Z"
-                fill="url(#pv_grad_1)"
-              />
-              <path
-                d="M2 17L12 22L22 17"
-                stroke="url(#pv_grad_2)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M2 12L12 17L22 12"
-                stroke="url(#pv_grad_3)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <defs>
-                <linearGradient id="pv_grad_1" x1="2" y1="2" x2="22" y2="12" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#a5b4fc" />
-                  <stop offset="1" stopColor="#6366f1" />
-                </linearGradient>
-                <linearGradient id="pv_grad_2" x1="2" y1="17" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#38bdf8" />
-                  <stop offset="1" stopColor="#06b6d4" />
-                </linearGradient>
-                <linearGradient id="pv_grad_3" x1="2" y1="12" x2="22" y2="17" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#818cf8" />
-                  <stop offset="1" stopColor="#4f46e5" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          {!collapsed && (
-            <div className={styles.brandText}>
-              <span className={styles.brandTitle}>PayVantage</span>
-              <span className={styles.brandSubtitle}>Compensation Suite</span>
+      {/* Top Application Navbar */}
+      <Header className={styles.navbar}>
+        <div className={styles.navContainer}>
+          {/* Brand Identity */}
+          <div className={styles.brandGroup} onClick={() => router.push("/")}>
+            <div className={styles.brandIcon}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2L2 7L12 12L22 7L12 2Z"
+                  fill="url(#brandGrad1)"
+                />
+                <path
+                  d="M2 17L12 22L22 17"
+                  stroke="url(#brandGrad2)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M2 12L12 17L22 12"
+                  stroke="url(#brandGrad1)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <defs>
+                  <linearGradient id="brandGrad1" x1="2" y1="2" x2="22" y2="12" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#3b82f6" />
+                    <stop offset="1" stopColor="#1d4ed8" />
+                  </linearGradient>
+                  <linearGradient id="brandGrad2" x1="2" y1="17" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#10b981" />
+                    <stop offset="1" stopColor="#059669" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
-          )}
-        </div>
-
-        <Menu
-          theme="dark"
-          mode="inline"
-          selectedKeys={[selectedKey]}
-          items={menuItems}
-          onClick={handleMenuClick}
-          className={`${styles.menuContainer} ${
-            collapsed ? styles.menuCollapsed : ""
-          }`}
-        />
-
-        {!collapsed && (
-          <div className={styles.sidebarFooter}>
-            <div className={styles.systemStatusPill}>
-              <span className={styles.statusPulse} />
-              <div className={styles.statusInfo}>
-                <span className={styles.statusLabel}>ACME Corp · Prod</span>
-                <span className={styles.statusSub}>10,000 Staff Active</span>
-              </div>
+            <div className={styles.brandMeta}>
+              <span className={styles.brandName}>PayVantage</span>
+              <span className={styles.brandOrgBadge}>
+                ACME Corp <span className={styles.brandDot}>•</span> Global
+              </span>
             </div>
           </div>
-        )}
-      </Sider>
 
-      <Layout className={styles.mainLayout}>
-        <Header className={styles.header}>
-          <div className={styles.headerLeft}>
-            <div className={styles.environmentBadge}>
+          {/* Navigation Links */}
+          <nav className={styles.navLinks}>
+            {navItems.map((item) => {
+              const isActive = selectedKey === item.key;
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => router.push(item.key)}
+                  className={`${styles.navItem} ${isActive ? styles.navItemActive : ""}`}
+                >
+                  <span className={styles.navItemIcon}>{item.icon}</span>
+                  <div className={styles.navItemText}>
+                    <span className={styles.navItemLabel}>{item.label}</span>
+                  </div>
+                  {isActive && <span className={styles.activeIndicator} />}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Right Header Status & User */}
+          <div className={styles.navRight}>
+            <div className={styles.statusChip}>
               <Badge status="processing" color="#10b981" />
-              <span>Database Connected</span>
+              <span className={styles.statusText}>10,000 Records Active</span>
             </div>
-          </div>
 
-          <div className={styles.headerRight}>
-            <div className={styles.userBadge}>
+            <div className={styles.profileBadge}>
               <Avatar
-                className={styles.userAvatar}
+                className={styles.profileAvatar}
                 icon={<UserOutlined />}
               />
-              <div className={styles.userDetails}>
-                <div className={styles.userName}>Sarah Jenkins</div>
-                <div className={styles.userRole}>Chief People Officer (HR)</div>
+              <div className={styles.profileInfo}>
+                <span className={styles.profileName}>Sarah Jenkins</span>
+                <span className={styles.profileRole}>VP of Total Rewards</span>
               </div>
             </div>
           </div>
-        </Header>
+        </div>
+      </Header>
 
-        <Content className={styles.contentArea}>
-          <div className={styles.contentInner}>{children}</div>
-        </Content>
-      </Layout>
+      {/* Main Viewport Content Area */}
+      <Content className={styles.contentWrapper}>
+        <div className={styles.contentInner}>{children}</div>
+      </Content>
     </Layout>
   );
 }
