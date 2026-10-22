@@ -71,18 +71,28 @@ export default function ImportExportPage() {
       "2023-01-01",
     ].join(",");
 
-    const csvContent = "data:text/csv;charset=utf-8," + `${headers}\n${sampleRow}\n`;
-    const encodedUri = encodeURI(csvContent);
+    // Prepend UTF-8 BOM (\ufeff) and use standard CRLF line endings for 100% Excel/Sheets compatibility
+    const csvContent = "\ufeff" + `${headers}\r\n${sampleRow}\r\n`;
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    link.href = url;
     link.setAttribute("download", "employee_import_template.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+    message.success("Sample CSV template downloaded successfully");
   };
 
-  const handleDownloadFullExport = () => {
-    window.open(api.getExportUrl(), "_blank");
+  const handleDownloadFullExport = async () => {
+    try {
+      message.loading({ content: "Generating complete CSV export...", key: "exporting" });
+      await api.downloadEmployeesCsv(undefined, "acme_employees_database.csv");
+      message.success({ content: "CSV database export completed!", key: "exporting" });
+    } catch (e) {
+      message.error({ content: "Failed to download CSV export.", key: "exporting" });
+    }
   };
 
   const uploadProps: UploadProps = {

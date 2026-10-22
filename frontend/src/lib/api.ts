@@ -64,8 +64,37 @@ export const api = {
   },
 
   // CSV operations
-  getExportUrl: (): string => {
-    return `${API_BASE_URL}/api/v1/employees/export`;
+  getExportUrl: (params?: EmployeeFilterParams): string => {
+    const url = new URL(`${API_BASE_URL}/api/v1/employees/export`);
+    if (params) {
+      Object.entries(params).forEach(([key, val]) => {
+        if (val !== undefined && val !== null && val !== "" && key !== "page" && key !== "page_size") {
+          url.searchParams.append(key, String(val));
+        }
+      });
+    }
+    return url.toString();
+  },
+
+  downloadEmployeesCsv: async (
+    filters?: EmployeeFilterParams,
+    filename: string = "employees_export.csv"
+  ): Promise<void> => {
+    const { page, page_size, ...cleanParams } = (filters || {}) as any;
+    const res = await apiClient.get("/api/v1/employees/export", {
+      params: cleanParams,
+      responseType: "blob",
+    });
+
+    const blob = new Blob([res.data], { type: "text/csv;charset=utf-8;" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   },
 
   importCsv: async (file: File): Promise<CSVImportResult> => {

@@ -3,8 +3,8 @@
 import csv
 import io
 from datetime import datetime, date
-from typing import List, Tuple
-from sqlalchemy import select
+from typing import List, Tuple, Optional
+from sqlalchemy import select, or_
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.employee import Employee
@@ -37,14 +37,46 @@ class CSVService:
     """Handles bulk CSV export and validation-driven import."""
 
     @staticmethod
-    async def export_employees(db: AsyncSession) -> str:
-        """Export all employees to a CSV string."""
-        query = select(Employee).order_by(Employee.employee_id.asc())
+    async def export_employees(
+        db: AsyncSession, filters: Optional[EmployeeFilter] = None
+    ) -> str:
+        """Export employees to a CSV string with UTF-8 BOM for universal Excel/spreadsheet compatibility."""
+        query = select(Employee)
+
+        if filters:
+            if filters.search:
+                search_pattern = f"%{filters.search.strip()}%"
+                search_cond = or_(
+                    Employee.first_name.ilike(search_pattern),
+                    Employee.last_name.ilike(search_pattern),
+                    Employee.email.ilike(search_pattern),
+                    Employee.employee_id.ilike(search_pattern),
+                    Employee.designation.ilike(search_pattern),
+                )
+                query = query.where(search_cond)
+            if filters.department:
+                query = query.where(Employee.department == filters.department)
+            if filters.country:
+                query = query.where(Employee.country == filters.country)
+            if filters.status:
+                query = query.where(Employee.status == filters.status)
+            if filters.employment_type:
+                query = query.where(Employee.employment_type == filters.employment_type)
+            if filters.currency:
+                query = query.where(Employee.currency == filters.currency)
+            if filters.min_salary is not None:
+                query = query.where(Employee.base_salary >= filters.min_salary)
+            if filters.max_salary is not None:
+                query = query.where(Employee.base_salary <= filters.max_salary)
+
+        query = query.order_by(Employee.employee_id.asc())
         result = await db.execute(query)
         employees = result.scalars().all()
 
         output = io.StringIO()
-        writer = csv.writer(output)
+        # Prepend UTF-8 Byte Order Mark (BOM) so Excel/Sheets natively recognizes UTF-8 encoding
+        output.write("\ufeff")
+        writer = csv.writer(output, lineterminator="\r\n")
         writer.writerow(CSV_COLUMNS)
 
         for emp in employees:

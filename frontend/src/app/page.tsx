@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { Button, Alert } from "antd";
+import { Button, Alert, message } from "antd";
 import {
   TeamOutlined,
   UserAddOutlined,
@@ -78,8 +78,14 @@ export default function DashboardPage() {
     refetchDist();
   };
 
-  const handleExportCsv = () => {
-    window.open(api.getExportUrl(), "_blank");
+  const handleExportCsv = async () => {
+    try {
+      message.loading({ content: "Exporting payroll CSV...", key: "exporting" });
+      await api.downloadEmployeesCsv(undefined, "salarybox_payroll_export.csv");
+      message.success({ content: "Payroll CSV exported successfully!", key: "exporting" });
+    } catch (e) {
+      message.error({ content: "Failed to export payroll CSV.", key: "exporting" });
+    }
   };
 
   return (

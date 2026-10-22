@@ -69,16 +69,39 @@ async def list_employees(
 
 
 @router.get("/export")
-async def export_employees_csv(db: AsyncSession = Depends(get_db)):
-    """Export all employees to a CSV file."""
+async def export_employees_csv(
+    search: Optional[str] = Query(None, description="Search across ID, names, role, email"),
+    department: Optional[str] = Query(None, description="Filter by department"),
+    country: Optional[str] = Query(None, description="Filter by country"),
+    status: Optional[str] = Query(None, description="Filter by status"),
+    employment_type: Optional[str] = Query(None, description="Filter by employment type"),
+    currency: Optional[str] = Query(None, description="Filter by currency"),
+    min_salary: Optional[float] = Query(None, description="Filter by minimum salary"),
+    max_salary: Optional[float] = Query(None, description="Filter by maximum salary"),
+    db: AsyncSession = Depends(get_db),
+):
+    """Export employees to a CSV file matching optional filter criteria."""
     from fastapi.responses import Response
     from app.services.csv_service import CSVService
 
-    csv_data = await CSVService.export_employees(db)
+    filters = EmployeeFilter(
+        search=search,
+        department=department,
+        country=country,
+        status=status,
+        employment_type=employment_type,
+        currency=currency,
+        min_salary=min_salary,
+        max_salary=max_salary,
+    )
+    csv_data = await CSVService.export_employees(db, filters)
     return Response(
         content=csv_data,
-        media_type="text/csv",
-        headers={"Content-Disposition": "attachment; filename=employees.csv"},
+        media_type="text/csv; charset=utf-8",
+        headers={
+            "Content-Disposition": 'attachment; filename="employees_export.csv"',
+            "Content-Type": "text/csv; charset=utf-8",
+        },
     )
 
 

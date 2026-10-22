@@ -83,8 +83,14 @@ export default function EmployeesPage() {
     }
   };
 
-  const handleExportCsv = () => {
-    window.open(api.getExportUrl(), "_blank");
+  const handleExportCsv = async () => {
+    try {
+      message.loading({ content: "Exporting filtered employees CSV...", key: "exporting" });
+      await api.downloadEmployeesCsv(filters, "acme_filtered_employees.csv");
+      message.success({ content: "Filtered CSV exported successfully!", key: "exporting" });
+    } catch (e) {
+      message.error({ content: "Failed to export employees CSV.", key: "exporting" });
+    }
   };
 
   return (
