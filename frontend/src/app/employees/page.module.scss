@@ -63,3 +63,31 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .topBar {
+    padding: 18px 20px;
+    gap: 16px;
+  }
+
+  .mainTitle {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 580px) {
+  .actions {
+    width: 100%;
+
+    :global(.ant-btn) {
+      flex: 1;
+      justify-content: center;
+      font-size: 13px !important;
+      padding: 0 12px !important;
+    }
+  }
+
+  .mainTitle {
+    font-size: 19px;
+  }
+}

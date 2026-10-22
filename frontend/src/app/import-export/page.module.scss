@@ -41,8 +41,13 @@
 
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 24px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .card {
@@ -126,4 +131,19 @@
   font-weight: 800;
   color: #0f172a;
   font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .topBar {
+    padding: 18px 20px;
+  }
+
+  .mainTitle {
+    font-size: 21px;
+  }
+
+  .statRow {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }

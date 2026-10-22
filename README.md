@@ -1,4 +1,4 @@
-# PayVantage — Enterprise Compensation & Salary Intelligence
+# PayVantage - Enterprise Compensation & Salary Intelligence
 
 A production-ready, high-performance salary management platform built for ACME org's HR leadership, replacing brittle spreadsheet workflows for **10,000+ employees** across 10 international jurisdictions and 9 currencies.
 

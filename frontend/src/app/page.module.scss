@@ -109,9 +109,43 @@
 
   @media (max-width: 1100px) {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) {
+    gap: 16px;
   }
 }
 
 .fullRow {
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .commandBar {
+    padding: 18px 20px;
+    gap: 16px;
+  }
+
+  .mainTitle {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 580px) {
+  .commandRight {
+    width: 100%;
+  }
+
+  .secondaryBtn,
+  .primaryBtn {
+    flex: 1;
+    justify-content: center;
+    font-size: 13px !important;
+    padding: 0 12px !important;
+  }
+
+  .mainTitle {
+    font-size: 19px;
+  }
 }

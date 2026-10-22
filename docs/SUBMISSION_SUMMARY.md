@@ -1,4 +1,4 @@
-# Assessment Submission Summary — ACME PayVantage
+# Assessment Submission Summary - ACME PayVantage
 
 **Candidate**: Raj Patel  
 **Repository**: Incubyte Assessment (`incubyte-salary-management-rajpatel`)  

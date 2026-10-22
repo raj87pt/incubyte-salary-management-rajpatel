@@ -30,7 +30,7 @@ export default function NotFound() {
         >
           <Result
             status="404"
-            title="404 — Page Not Found"
+            title="404 - Page Not Found"
             subTitle="The requested page does not exist or has been relocated within the ACME Enterprise Portal."
             extra={
               <Link href="/" passHref legacyBehavior>

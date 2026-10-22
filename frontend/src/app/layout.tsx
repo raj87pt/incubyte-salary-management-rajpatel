@@ -7,9 +7,18 @@ import "./globals.scss";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "PayVantage — Enterprise Compensation Intelligence",
+  title: "PayVantage - Enterprise Compensation Intelligence",
   description:
     "Next-generation compensation intelligence and enterprise salary management platform for 10,000+ global employees.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico?v=3" },
+    ],
+    shortcut: "/favicon.ico?v=3",
+    apple: "/favicon.png?v=3",
+  },
 };
 
 export default function RootLayout({
@@ -33,8 +42,10 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png?v=3" sizes="32x32" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico?v=3" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=3" />
       </head>
       <body>
         <AntdRegistry>

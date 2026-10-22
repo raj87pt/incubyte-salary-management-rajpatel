@@ -350,7 +350,7 @@ export default function EmployeeFormModal({
           {isEdit && isSalaryChanged && (
             <div className={styles.col12} style={{ marginTop: 4 }}>
               <Alert
-                message="Salary change detected — please state reason for immutable audit logging"
+                message="Salary change detected - please state reason for immutable audit logging"
                 type="info"
                 showIcon
                 className={styles.revisionAlert}

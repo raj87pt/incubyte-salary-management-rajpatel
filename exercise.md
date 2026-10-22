@@ -100,7 +100,7 @@ Along with your solution, please commit any artifacts that help us understand yo
 
 - Performance considerations
 
-There is no required format — use whatever helps best explain your approach.
+There is no required format - use whatever helps best explain your approach.
 
 
 How to Succeed in This Assessment

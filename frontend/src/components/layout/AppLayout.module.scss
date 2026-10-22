@@ -230,3 +230,97 @@
   max-width: 1600px;
   margin: 0 auto;
 }
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 20px !important;
+  }
+
+  .contentInner {
+    padding: 20px 20px 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .statusChip {
+    display: none;
+  }
+
+  .profileRole {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    height: auto !important;
+    min-height: 60px;
+    padding: 10px 16px 8px !important;
+  }
+
+  .navContainer {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .brandGroup {
+    order: 1;
+  }
+
+  .navRight {
+    order: 2;
+    gap: 8px;
+  }
+
+  .navLinks {
+    order: 3;
+    width: 100%;
+    height: 42px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .navItem {
+    padding: 6px 12px;
+    height: 36px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .activeIndicator {
+    bottom: -4px;
+    left: 10px;
+    right: 10px;
+    height: 2.5px;
+  }
+
+  .profileInfo {
+    display: none;
+  }
+
+  .contentWrapper {
+    height: calc(100vh - 110px);
+  }
+
+  .contentInner {
+    padding: 16px 12px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandOrgBadge {
+    display: none;
+  }
+
+  .brandName {
+    font-size: 16px;
+  }
+}
