@@ -11,6 +11,8 @@ import {
   Skeleton,
   Empty,
   Avatar,
+  Result,
+  Button,
 } from "antd";
 import {
   UserOutlined,
@@ -35,7 +37,12 @@ export default function EmployeeDetailDrawer({
   open,
   onClose,
 }: EmployeeDetailDrawerProps) {
-  const { data: employee, isLoading } = useQuery({
+  const {
+    data: employee,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
     queryKey: ["employee-detail", employeeId],
     queryFn: () => (employeeId ? api.getEmployeeDetails(employeeId) : null),
     enabled: !!employeeId && open,
@@ -65,8 +72,21 @@ export default function EmployeeDetailDrawer({
       open={open}
       destroyOnHidden
     >
-      {isLoading || !employee ? (
+      {isLoading ? (
         <Skeleton active avatar paragraph={{ rows: 8 }} />
+      ) : isError || !employee ? (
+        <div style={{ padding: "40px 0" }}>
+          <Result
+            status="warning"
+            title="Failed to Load Employee Profile"
+            subTitle="Unable to retrieve the full compensation history from the database."
+            extra={
+              <Button type="primary" onClick={() => refetch()}>
+                Retry Loading
+              </Button>
+            }
+          />
+        </div>
       ) : (
         <div>
           {/* Header Card */}

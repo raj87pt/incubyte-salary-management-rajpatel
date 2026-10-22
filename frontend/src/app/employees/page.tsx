@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Button, message } from "antd";
+import { Button, message, Alert } from "antd";
 import {
   UserAddOutlined,
   DownloadOutlined,
@@ -36,7 +36,7 @@ export default function EmployeesPage() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 
   // Fetch employees
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["employees", filters],
     queryFn: () => api.getEmployees(filters),
   });
@@ -90,6 +90,23 @@ export default function EmployeesPage() {
   return (
     <AppLayout>
       <div className={styles.pageContainer}>
+        {isError && (
+          <div style={{ marginBottom: 16 }}>
+            <Alert
+              type="error"
+              showIcon
+              message="Failed to Load Employees"
+              description="Unable to retrieve employee records from the server. Check your connection or retry."
+              action={
+                <Button size="small" danger type="primary" onClick={() => refetch()}>
+                  Retry Loading
+                </Button>
+              }
+              style={{ borderRadius: 10 }}
+            />
+          </div>
+        )}
+
         {/* Top Header */}
         <div className={styles.topBar}>
           <div>
@@ -138,6 +155,7 @@ export default function EmployeesPage() {
           onView={handleView}
           onEdit={handleEdit}
           onDelete={handleDelete}
+          onResetFilters={handleResetFilters}
         />
       </div>
 

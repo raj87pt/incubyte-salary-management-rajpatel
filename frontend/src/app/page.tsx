@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { Button } from "antd";
+import { Button, Alert } from "antd";
 import {
   TeamOutlined,
   UserAddOutlined,
@@ -29,6 +29,7 @@ export default function DashboardPage() {
   const {
     data: metrics,
     isLoading: loadingMetrics,
+    isError: errorMetrics,
     refetch: refetchMetrics,
   } = useQuery({
     queryKey: ["dashboard-metrics"],
@@ -36,22 +37,46 @@ export default function DashboardPage() {
   });
 
   // Fetch Department Stats
-  const { data: deptStats, isLoading: loadingDept } = useQuery({
+  const {
+    data: deptStats,
+    isLoading: loadingDept,
+    isError: errorDept,
+    refetch: refetchDept,
+  } = useQuery({
     queryKey: ["department-stats"],
     queryFn: api.getDepartmentStats,
   });
 
   // Fetch Country Stats
-  const { data: countryStats, isLoading: loadingCountry } = useQuery({
+  const {
+    data: countryStats,
+    isLoading: loadingCountry,
+    isError: errorCountry,
+    refetch: refetchCountry,
+  } = useQuery({
     queryKey: ["country-stats"],
     queryFn: api.getCountryStats,
   });
 
   // Fetch Salary Distribution
-  const { data: distribution, isLoading: loadingDist } = useQuery({
+  const {
+    data: distribution,
+    isLoading: loadingDist,
+    isError: errorDist,
+    refetch: refetchDist,
+  } = useQuery({
     queryKey: ["salary-distribution"],
     queryFn: api.getSalaryDistribution,
   });
+
+  const hasAnyError = errorMetrics || errorDept || errorCountry || errorDist;
+
+  const handleRefetchAll = () => {
+    refetchMetrics();
+    refetchDept();
+    refetchCountry();
+    refetchDist();
+  };
 
   const handleExportCsv = () => {
     window.open(api.getExportUrl(), "_blank");
@@ -60,6 +85,23 @@ export default function DashboardPage() {
   return (
     <AppLayout>
       <div className={styles.dashboardContainer}>
+        {hasAnyError && (
+          <div style={{ marginBottom: 8 }}>
+            <Alert
+              type="error"
+              showIcon
+              message="Analytics Data Sync Failed"
+              description="Unable to fetch the latest payroll analytics from the backend service. Check server connection or retry."
+              action={
+                <Button size="small" danger type="primary" onClick={handleRefetchAll}>
+                  Retry Sync
+                </Button>
+              }
+              style={{ borderRadius: 10 }}
+            />
+          </div>
+        )}
+
         {/* Top Header Bar */}
         <div className={styles.topBar}>
           <div className={styles.titleArea}>

@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Table, Tag, Button, Tooltip, Popconfirm } from "antd";
+import { Table, Tag, Button, Tooltip, Popconfirm, Empty, Skeleton } from "antd";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import {
   EyeOutlined,
   EditOutlined,
   DeleteOutlined,
   UserOutlined,
+  ReloadOutlined,
 } from "@ant-design/icons";
 import { Employee } from "@/types";
 import styles from "./EmployeeTable.module.scss";
@@ -23,6 +24,7 @@ interface EmployeeTableProps {
   onView: (employee: Employee) => void;
   onEdit: (employee: Employee) => void;
   onDelete: (employee: Employee) => void;
+  onResetFilters?: () => void;
 }
 
 export default function EmployeeTable({
@@ -36,6 +38,7 @@ export default function EmployeeTable({
   onView,
   onEdit,
   onDelete,
+  onResetFilters,
 }: EmployeeTableProps) {
   const formatCurrency = (val: number, cur: string) => {
     return `${cur} ${Number(val).toLocaleString(undefined, {
@@ -190,6 +193,22 @@ export default function EmployeeTable({
           pageSizeOptions: ["10", "20", "50", "100"],
         }}
         onChange={handleTableChange}
+        locale={{
+          emptyText: (
+            <div style={{ padding: "48px 0" }}>
+              <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description="No employees match your search or filter criteria"
+              >
+                {onResetFilters && (
+                  <Button type="primary" onClick={onResetFilters}>
+                    Clear All Filters
+                  </Button>
+                )}
+              </Empty>
+            </div>
+          ),
+        }}
       />
     </div>
   );
