@@ -27,9 +27,9 @@ RUN mkdir -p /app/data
 
 EXPOSE 8000
 
-# Health check
+# Health check (supports Render and local environments)
 HEALTHCHECK --interval=15s --timeout=5s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:8000/health || exit 1
+  CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
 
-# Start script seeds DB if not present and starts uvicorn
-CMD ["sh", "-c", "python seed.py 10000 && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+# Start script: seeds database if not present (or if FORCE_SEED=true) and starts uvicorn on $PORT
+CMD ["sh", "-c", "if [ \"${FORCE_SEED}\" = \"true\" ] || [ ! -f /app/data/salary_management.db ]; then python seed.py 10000; fi && uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

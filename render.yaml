@@ -1,0 +1,37 @@
+# Render Blueprint Specification (render.yaml)
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # -----------------------------------------------------------
+  # 1. PayVantage Backend API (FastAPI)
+  # -----------------------------------------------------------
+  - type: web
+    name: payvantage-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: APP_NAME
+        value: PayVantage Compensation Platform
+      - key: DEBUG
+        value: "false"
+
+  # -----------------------------------------------------------
+  # 2. PayVantage Frontend UI (Next.js)
+  # -----------------------------------------------------------
+  - type: web
+    name: payvantage-frontend
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    region: oregon
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: payvantage-backend
+          property: host
