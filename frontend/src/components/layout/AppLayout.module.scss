@@ -83,12 +83,12 @@
 
 .header {
   background: #ffffff !important;
-  padding: 0 28px !important;
+  padding: 0 24px !important;
   height: 64px !important;
-  line-height: 64px !important;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
@@ -99,34 +99,24 @@
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-
-.currencyTag {
-  background: #fdf0d5; // Papaya Whip
-  border: 1px solid #fed7aa;
-  color: #780000; // Molten Lava
-  font-weight: 700;
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 12px;
-  letter-spacing: 0.2px;
+  gap: 16px;
 }
 
 .userBadge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 8px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
+  line-height: normal;
 }
 
 .userName {
@@ -140,6 +130,7 @@
   font-size: 11px;
   color: #669bbc; // Steel Blue
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .mainContent {

@@ -2,14 +2,12 @@
 
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Layout, Menu, Avatar, Tag, Tooltip } from "antd";
+import { Layout, Menu, Avatar } from "antd";
 import {
   DashboardOutlined,
   TeamOutlined,
   CloudUploadOutlined,
-  GlobalOutlined,
   UserOutlined,
-  SafetyCertificateOutlined,
 } from "@ant-design/icons";
 
 import styles from "./AppLayout.module.scss";
@@ -81,22 +79,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
       <Layout>
         <Header className={styles.header}>
-          <div className={styles.headerLeft}>
-            <Tooltip title="All global salaries are normalized to USD for equitable cross-country analysis">
-              <span className={styles.currencyTag}>
-                <GlobalOutlined style={{ marginRight: 6 }} />
-                Base Currency: USD ($)
-              </span>
-            </Tooltip>
-            <Tag color="blue" icon={<SafetyCertificateOutlined />}>
-              10,000 Org Headcount
-            </Tag>
-          </div>
+          <div className={styles.headerLeft} />
 
           <div className={styles.headerRight}>
             <div className={styles.userBadge}>
               <Avatar
-                style={{ backgroundColor: "#1677ff" }}
+                style={{ backgroundColor: "#003049" }}
                 icon={<UserOutlined />}
               />
               <div>
