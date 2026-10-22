@@ -143,8 +143,10 @@ export default function EmployeeFormModal({
       onCancel={onClose}
       onOk={() => form.submit()}
       confirmLoading={submitting}
-      width={720}
+      width={880}
+      centered
       destroyOnHidden
+      className={styles.modal}
     >
       <Form
         form={form}
@@ -158,29 +160,21 @@ export default function EmployeeFormModal({
         }}
       >
         <div className={styles.formGrid}>
+          {/* Row 1: Employee ID & Name (span 4 each) */}
           <Form.Item
             name="employee_id"
             label="Employee ID"
             rules={[{ required: true, message: "Please input employee ID" }]}
+            className={styles.col4}
           >
             <Input placeholder="e.g. EMP-10001" disabled={isEdit} />
-          </Form.Item>
-
-          <Form.Item
-            name="email"
-            label="Work Email"
-            rules={[
-              { required: true, message: "Please input email" },
-              { type: "email", message: "Please enter a valid email" },
-            ]}
-          >
-            <Input placeholder="jane.doe@acme.org" />
           </Form.Item>
 
           <Form.Item
             name="first_name"
             label="First Name"
             rules={[{ required: true, message: "Please input first name" }]}
+            className={styles.col4}
           >
             <Input placeholder="Jane" />
           </Form.Item>
@@ -189,14 +183,29 @@ export default function EmployeeFormModal({
             name="last_name"
             label="Last Name"
             rules={[{ required: true, message: "Please input last name" }]}
+            className={styles.col4}
           >
             <Input placeholder="Doe" />
+          </Form.Item>
+
+          {/* Row 2: Contact, Department, Role (span 4 each) */}
+          <Form.Item
+            name="email"
+            label="Work Email"
+            rules={[
+              { required: true, message: "Please input email" },
+              { type: "email", message: "Please enter a valid email" },
+            ]}
+            className={styles.col4}
+          >
+            <Input placeholder="jane.doe@acme.org" />
           </Form.Item>
 
           <Form.Item
             name="department"
             label="Department"
             rules={[{ required: true, message: "Please select department" }]}
+            className={styles.col4}
           >
             <Select placeholder="Select department">
               {DEPARTMENTS.map((dept) => (
@@ -211,14 +220,17 @@ export default function EmployeeFormModal({
             name="designation"
             label="Role / Designation"
             rules={[{ required: true, message: "Please input role" }]}
+            className={styles.col4}
           >
             <Input placeholder="e.g. Senior Software Engineer" />
           </Form.Item>
 
+          {/* Row 3: Location & Currency (span 4 each) */}
           <Form.Item
             name="country"
             label="Country"
             rules={[{ required: true, message: "Please select country" }]}
+            className={styles.col4}
           >
             <Select
               placeholder="Select country"
@@ -236,14 +248,26 @@ export default function EmployeeFormModal({
             name="city"
             label="City"
             rules={[{ required: true, message: "Please input city" }]}
+            className={styles.col4}
           >
             <Input placeholder="San Francisco" />
           </Form.Item>
 
           <Form.Item
+            name="currency"
+            label="Currency"
+            rules={[{ required: true, message: "Please input currency" }]}
+            className={styles.col4}
+          >
+            <Input placeholder="USD" />
+          </Form.Item>
+
+          {/* Row 4: Compensation & Key Dates (span 4 each) */}
+          <Form.Item
             name="base_salary"
             label="Annual Base Salary"
             rules={[{ required: true, message: "Please input base salary" }]}
+            className={styles.col4}
           >
             <InputNumber
               style={{ width: "100%" }}
@@ -259,17 +283,10 @@ export default function EmployeeFormModal({
           </Form.Item>
 
           <Form.Item
-            name="currency"
-            label="Currency"
-            rules={[{ required: true, message: "Please input currency" }]}
-          >
-            <Input placeholder="USD" />
-          </Form.Item>
-
-          <Form.Item
             name="salary_effective_date"
             label="Salary Effective Date"
             rules={[{ required: true, message: "Please select effective date" }]}
+            className={styles.col4}
           >
             <DatePicker style={{ width: "100%" }} />
           </Form.Item>
@@ -278,19 +295,26 @@ export default function EmployeeFormModal({
             name="date_of_joining"
             label="Date of Joining"
             rules={[{ required: true, message: "Please select joining date" }]}
+            className={styles.col4}
+          >
+            <DatePicker style={{ width: "100%" }} />
+          </Form.Item>
+
+          {/* Row 5: Demographics & Contract Specs (span 3 each) */}
+          <Form.Item
+            name="date_of_birth"
+            label="Date of Birth"
+            rules={[{ required: true, message: "Please select date of birth" }]}
+            className={styles.col3}
           >
             <DatePicker style={{ width: "100%" }} />
           </Form.Item>
 
           <Form.Item
-            name="date_of_birth"
-            label="Date of Birth"
-            rules={[{ required: true, message: "Please select date of birth" }]}
+            name="employment_type"
+            label="Employment Type"
+            className={styles.col3}
           >
-            <DatePicker style={{ width: "100%" }} />
-          </Form.Item>
-
-          <Form.Item name="employment_type" label="Employment Type">
             <Select>
               <Select.Option value="full-time">Full-time</Select.Option>
               <Select.Option value="part-time">Part-time</Select.Option>
@@ -298,14 +322,22 @@ export default function EmployeeFormModal({
             </Select>
           </Form.Item>
 
-          <Form.Item name="status" label="Status">
+          <Form.Item
+            name="status"
+            label="Status"
+            className={styles.col3}
+          >
             <Select>
               <Select.Option value="active">Active</Select.Option>
               <Select.Option value="inactive">Inactive</Select.Option>
             </Select>
           </Form.Item>
 
-          <Form.Item name="gender" label="Gender">
+          <Form.Item
+            name="gender"
+            label="Gender"
+            className={styles.col3}
+          >
             <Select>
               <Select.Option value="Female">Female</Select.Option>
               <Select.Option value="Male">Male</Select.Option>
@@ -313,32 +345,32 @@ export default function EmployeeFormModal({
               <Select.Option value="Other">Other</Select.Option>
             </Select>
           </Form.Item>
-        </div>
 
-        {/* Audit Trail Prompt when Salary Changes during Edit */}
-        {isEdit && isSalaryChanged && (
-          <div className={styles.fullWidth} style={{ marginTop: 12 }}>
-            <Alert
-              title="Salary Modification Detected"
-              description="A historical salary revision audit record will be logged automatically. Please state the justification for this change."
-              type="info"
-              showIcon
-              className={styles.revisionAlert}
-            />
-            <Form.Item
-              name="salary_revision_reason"
-              label="Reason for Salary Revision"
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter the reason for modifying the salary",
-                },
-              ]}
-            >
-              <Input placeholder="e.g. Annual Merit Promotion / Market Equity Adjustment" />
-            </Form.Item>
-          </div>
-        )}
+          {/* Audit Trail Prompt when Salary Changes during Edit */}
+          {isEdit && isSalaryChanged && (
+            <div className={styles.col12} style={{ marginTop: 4 }}>
+              <Alert
+                message="Salary change detected — please state reason for immutable audit logging"
+                type="info"
+                showIcon
+                className={styles.revisionAlert}
+              />
+              <Form.Item
+                name="salary_revision_reason"
+                label="Reason for Salary Revision"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter the reason for modifying the salary",
+                  },
+                ]}
+                style={{ marginBottom: 0 }}
+              >
+                <Input placeholder="e.g. Annual Merit Promotion / Market Equity Adjustment" />
+              </Form.Item>
+            </div>
+          )}
+        </div>
       </Form>
     </Modal>
   );

@@ -1,14 +1,78 @@
-.formGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+.modal {
+  :global(.ant-modal-content) {
+    border-radius: 14px;
+    padding: 18px 24px 14px 24px;
+    box-shadow: 0 16px 40px rgba(0, 48, 73, 0.18);
+  }
+
+  :global(.ant-modal-header) {
+    margin-bottom: 12px;
+  }
+
+  :global(.ant-modal-title) {
+    font-size: 16px;
+    font-weight: 700;
+    color: #003049; // Deep Space Blue
+  }
+
+  :global(.ant-form-item) {
+    margin-bottom: 8px !important;
+  }
+
+  :global(.ant-form-item-label) {
+    padding-bottom: 2px !important;
+  }
+
+  :global(.ant-form-item-label > label) {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    color: #475569 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    height: auto !important;
+  }
+
+  :global(.ant-input),
+  :global(.ant-select-selector),
+  :global(.ant-picker),
+  :global(.ant-input-number) {
+    border-radius: 6px !important;
+    font-size: 13px !important;
+  }
+
+  :global(.ant-modal-footer) {
+    margin-top: 14px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 10px;
+  }
 }
 
-.fullWidth {
-  grid-column: span 2;
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px 14px;
+}
+
+.col4 {
+  grid-column: span 4;
+}
+
+.col3 {
+  grid-column: span 3;
+}
+
+.col12 {
+  grid-column: span 12;
 }
 
 .revisionAlert {
-  margin-bottom: 16px;
-  border-radius: 8px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .col4,
+  .col3 {
+    grid-column: span 12;
+  }
 }
