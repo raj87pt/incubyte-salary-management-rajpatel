@@ -9,15 +9,17 @@
 }
 
 .navbar {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
   height: 68px !important;
   line-height: normal !important;
   padding: 0 32px !important;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 4px 16px -2px rgba(15, 23, 42, 0.02);
   display: flex !important;
   align-items: center !important;
   flex-shrink: 0;
@@ -124,8 +126,9 @@
 
 .navItemActive {
   color: #1d4ed8 !important;
-  background: #eff6ff !important;
+  background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%) !important;
   font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(191, 219, 254, 0.7), 0 1px 3px rgba(37, 99, 235, 0.08);
 
   .navItemIcon {
     color: #2563eb;
@@ -138,8 +141,9 @@
   left: 16px;
   right: 16px;
   height: 3px;
-  background: #2563eb;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
   border-radius: 3px 3px 0 0;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
 }
 
 .navItemText {
@@ -161,18 +165,35 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 12px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  padding: 5px 12px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+  border: 1px solid #a7f3d0;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #334155;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #065f46;
   white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(16, 185, 129, 0.06);
+}
 
-  :global(.ant-badge) {
-    display: flex;
-    align-items: center;
+.livePulseDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  animation: pulseGlow 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 5px rgba(16, 185, 129, 0);
   }
 }
 
@@ -180,22 +201,28 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 4px 10px;
+  padding: 4px 12px 4px 6px;
   border-radius: 24px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background: #f1f5f9;
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
   }
 }
 
 .profileAvatar {
-  background: linear-gradient(135deg, #2563eb 0%, #059669 100%) !important;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #06b6d4 100%) !important;
   color: #ffffff !important;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
   flex-shrink: 0;
+  border: 1.5px solid #ffffff;
 }
 
 .profileInfo {

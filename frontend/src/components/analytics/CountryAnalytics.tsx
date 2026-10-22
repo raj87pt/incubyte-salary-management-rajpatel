@@ -101,6 +101,7 @@ export default function CountryAnalytics({
           dataSource={data}
           columns={columns}
           rowKey="country"
+          scroll={{ x: 650 }}
           pagination={{ pageSize: 5, size: "small" }}
           size="middle"
           locale={{

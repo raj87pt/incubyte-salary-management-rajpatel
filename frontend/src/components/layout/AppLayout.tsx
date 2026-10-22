@@ -87,18 +87,19 @@ export default function AppLayout({ children }: AppLayoutProps) {
           {/* Right Header Status & User */}
           <div className={styles.navRight}>
             <div className={styles.statusChip}>
-              <Badge status="processing" color="#10b981" />
+              <span className={styles.livePulseDot} />
               <span className={styles.statusText}>10,000 Records Active</span>
             </div>
 
-            <div className={styles.profileBadge}>
-              <Avatar
-                className={styles.profileAvatar}
-                icon={<UserOutlined />}
-              />
+            <div className={styles.profileBadge} title="Raj Patel - Head of Global Total Rewards">
+              <Badge dot status="success" offset={[-2, 28]}>
+                <Avatar className={styles.profileAvatar}>
+                  RP
+                </Avatar>
+              </Badge>
               <div className={styles.profileInfo}>
-                <span className={styles.profileName}>Sarah Jenkins</span>
-                <span className={styles.profileRole}>VP of Total Rewards</span>
+                <span className={styles.profileName}>Raj Patel</span>
+                <span className={styles.profileRole}>Head of Global Rewards</span>
               </div>
             </div>
           </div>
