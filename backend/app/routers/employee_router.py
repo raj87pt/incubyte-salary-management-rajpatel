@@ -2,10 +2,11 @@
 
 import math
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
+from app.schemas.analytics import CSVImportResponse
 from app.schemas.employee import (
     EmployeeCreate,
     EmployeeUpdate,
@@ -65,6 +66,34 @@ async def list_employees(
         page_size=page_size,
         total_pages=total_pages,
     )
+
+
+@router.get("/export")
+async def export_employees_csv(db: AsyncSession = Depends(get_db)):
+    """Export all employees to a CSV file."""
+    from fastapi.responses import Response
+    from app.services.csv_service import CSVService
+
+    csv_data = await CSVService.export_employees(db)
+    return Response(
+        content=csv_data,
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=employees.csv"},
+    )
+
+
+@router.post("/import", response_model=CSVImportResponse)
+async def import_employees_csv(
+    file: UploadFile = File(...),
+    db: AsyncSession = Depends(get_db),
+):
+    """Import employees from an uploaded CSV file."""
+    from app.services.csv_service import CSVService
+
+    contents = await file.read()
+    csv_text = contents.decode("utf-8")
+    result = await CSVService.import_employees(db, csv_text)
+    return result
 
 
 @router.post("", response_model=EmployeeResponse, status_code=status.HTTP_201_CREATED)
