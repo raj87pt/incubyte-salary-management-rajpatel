@@ -209,50 +209,69 @@
 .header {
   background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(12px);
-  padding: 0 28px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0 28px !important;
+  height: 64px !important;
+  line-height: 1.4 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   border-bottom: 1px solid #e2e8f0;
   box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.02);
   z-index: 10;
   flex-shrink: 0;
+  box-sizing: border-box !important;
 }
 
 .headerLeft {
   display: flex;
   align-items: center;
   gap: 16px;
+  height: 100%;
 }
 
 .environmentBadge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px;
+  padding: 5px 12px;
+  height: 30px;
   background: #f1f5f9;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
   color: #475569;
   border: 1px solid #e2e8f0;
+  line-height: 1 !important;
+  box-sizing: border-box;
+
+  :global(.ant-badge) {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  span {
+    line-height: 1;
+  }
 }
 
 .headerRight {
   display: flex;
   align-items: center;
   gap: 18px;
+  height: 100%;
 }
 
 .userBadge {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border-radius: 28px;
   transition: background 0.2s ease;
   cursor: pointer;
+  line-height: 1 !important;
+  box-sizing: border-box;
 
   &:hover {
     background: #f1f5f9;
@@ -264,24 +283,30 @@
   color: #ffffff !important;
   font-weight: 700;
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+  flex-shrink: 0;
 }
 
 .userDetails {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.2 !important;
 }
 
 .userName {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #0f172a;
-  line-height: 1.2;
+  line-height: 1.2 !important;
+  letter-spacing: -0.2px;
 }
 
 .userRole {
   font-size: 11px;
   color: #64748b;
   font-weight: 500;
+  line-height: 1.2 !important;
 }
 
 .contentArea {

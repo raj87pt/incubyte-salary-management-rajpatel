@@ -140,10 +140,10 @@ export default function AppLayout({ children }: AppLayoutProps) {
       <Layout className={styles.mainLayout}>
         <Header className={styles.header}>
           <div className={styles.headerLeft}>
-            <span className={styles.environmentBadge}>
+            <div className={styles.environmentBadge}>
               <Badge status="processing" color="#10b981" />
               <span>Database Connected</span>
-            </span>
+            </div>
           </div>
 
           <div className={styles.headerRight}>
