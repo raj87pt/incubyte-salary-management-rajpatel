@@ -1,6 +1,6 @@
-# PayVantage — Enterprise Compensation & Salary Intelligence Platform
+# PayVantage - Enterprise Compensation & Salary Intelligence Platform
 
-> **A high-velocity, scalable salary management system engineered for executive HR and compensation teams — handling 10,000+ international employee records, dynamic multi-currency conversions, and immutable salary revision audit trails with sub-15ms query performance.**
+> **A high-velocity, scalable salary management system engineered for executive HR and compensation teams - handling 10,000+ international employee records, dynamic multi-currency conversions, and immutable salary revision audit trails with sub-15ms query performance.**
 
 [![Live Web Portal](https://img.shields.io/badge/Render-Live_Web_App-059669?style=for-the-badge&logo=render&logoColor=white)](https://incubyte-salary-management-rajpatel-1.onrender.com)
 [![Backend REST API](https://img.shields.io/badge/FastAPI-Backend_API-1E3A8A?style=for-the-badge&logo=fastapi&logoColor=white)](https://incubyte-salary-management-rajpatel.onrender.com)
@@ -140,7 +140,7 @@ Navigate to [http://localhost:3000](http://localhost:3000).
 
 Both services maintain comprehensive test coverage across critical calculation pipelines, validation schemas, and UI components.
 
-### 1. Backend Test Suite (`pytest` — 16/16 Passing)
+### 1. Backend Test Suite (`pytest` - 16/16 Passing)
 
 ```bash
 cd backend
@@ -169,7 +169,7 @@ tests/test_health.py::test_health_check_returns_healthy PASSED             [100%
 ============================== 16 passed in 0.74s ==============================
 ```
 
-### 2. Frontend Test Suite (`vitest` — 8/8 Passing)
+### 2. Frontend Test Suite (`vitest` - 8/8 Passing)
 
 ```bash
 cd frontend
@@ -235,8 +235,8 @@ incubyte-salary-management-rajpatel/
 
 For in-depth architectural specifications and design rationale, refer to the documentation directory:
 
-* [Architecture & Data Strategy](docs/ARCHITECTURE.md) — Index structures, query optimization, and schema designs.
-* [Engineering Trade-Offs](docs/TRADE_OFFS.md) — Rationale behind database choices, state management, and framework decisions.
-* [Assessment Requirements Matrix](docs/REQUIREMENTS.md) — Line-by-line verification against the exercise brief.
-* [Cloud Deployment Guide](docs/DEPLOYMENT_RENDER.md) — Render configuration and Docker multi-service deployment.
-* [Submission Summary](docs/SUBMISSION_SUMMARY.md) — Complete overview for technical reviewers.
+* [Architecture & Data Strategy](docs/ARCHITECTURE.md) - Index structures, query optimization, and schema designs.
+* [Engineering Trade-Offs](docs/TRADE_OFFS.md) - Rationale behind database choices, state management, and framework decisions.
+* [Assessment Requirements Matrix](docs/REQUIREMENTS.md) - Line-by-line verification against the exercise brief.
+* [Cloud Deployment Guide](docs/DEPLOYMENT_RENDER.md) - Render configuration and Docker multi-service deployment.
+* [Submission Summary](docs/SUBMISSION_SUMMARY.md) - Complete overview for technical reviewers.
