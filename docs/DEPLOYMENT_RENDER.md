@@ -58,15 +58,17 @@ If you prefer to create the services individually in the Render UI:
 
 ---
 
-## Technical Details
+### Troubleshooting: "failed to read dockerfile: open Dockerfile: no such file or directory"
+If you see this error in Render logs, it means Render searched in the root folder for `Dockerfile`.
+You have two quick fixes:
+1. **Via Render Dashboard Settings**:
+   - Go to your service on Render → **Settings** → **Build & Deploy**.
+   - If deploying Backend: Set **Root Directory** to `backend`.
+   - If deploying Frontend: Set **Root Directory** to `frontend`.
+   - Save and click **Manual Deploy** → **Deploy latest commit**.
+2. **Via Root Dockerfile**:
+   - The repository now includes a root [Dockerfile](../Dockerfile) that automatically builds and serves the backend API when deploying directly from the repository root with default settings.
 
-### Dynamic Port Binding (`$PORT`)
-- Render injects the `$PORT` environment variable dynamically at runtime (typically port `10000`).
-- Both `backend/Dockerfile` and `frontend/Dockerfile` are configured to listen on `0.0.0.0` at `${PORT:-8000}` and `${PORT:-3000}` respectively.
-
-### SQLite Database Seeding
-- On first container startup, `backend/Dockerfile` automatically runs `python seed.py 10000` in ~2.5 seconds to populate the SQLite database.
-- Subsequent restarts detect existing data and start immediately without re-seeding (unless `FORCE_SEED=true` is set).
 
 ### Cross-Origin Resource Sharing (CORS)
 - `backend/app/main.py` is configured with `allow_origin_regex=r"https?://.*\.onrender\.com"` so the frontend can communicate with the backend on any Render subdomain without CORS restrictions.

@@ -8,8 +8,9 @@ services:
   - type: web
     name: payvantage-backend
     runtime: docker
-    dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    dockerContext: .
     plan: free
     region: oregon
     healthCheckPath: /health
@@ -25,13 +26,11 @@ services:
   - type: web
     name: payvantage-frontend
     runtime: docker
-    dockerfilePath: ./frontend/Dockerfile
-    dockerContext: ./frontend
+    rootDir: frontend
+    dockerfilePath: Dockerfile
+    dockerContext: .
     plan: free
     region: oregon
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        fromService:
-          type: web
-          name: payvantage-backend
-          property: host
+        value: https://payvantage-backend.onrender.com
