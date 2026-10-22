@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database import init_db
+from app.routers.employee_router import router as employee_router
 
 
 @asynccontextmanager
@@ -26,11 +27,14 @@ app = FastAPI(
 # CORS — allow frontend origin
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include Routers
+app.include_router(employee_router)
 
 
 @app.get("/health", tags=["Health"])
