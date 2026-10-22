@@ -1,0 +1,14 @@
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.revisionAlert {
+  margin-bottom: 16px;
+  border-radius: 8px;
+}

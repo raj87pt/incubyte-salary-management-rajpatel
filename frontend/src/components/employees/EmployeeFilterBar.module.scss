@@ -1,0 +1,25 @@
+.filterContainer {
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 260px;
+}
+
+.selectItem {
+  min-width: 160px;
+}
+
+.resetBtn {
+  color: #64748b;
+}

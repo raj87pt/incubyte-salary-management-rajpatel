@@ -1,0 +1,92 @@
+.deptCard {
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 48, 73, 0.05);
+  border: 1px solid #e2e8f0;
+  height: 100%;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chartTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: #003049; // Deep Space Blue
+}
+
+.chartSubtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.deptItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.itemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.deptName {
+  font-weight: 700;
+  color: #003049; // Deep Space Blue
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deptHeadcount {
+  font-size: 11px;
+  color: #669bbc; // Steel Blue
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.deptStats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.totalSalary {
+  font-weight: 800;
+  color: #003049;
+}
+
+.avgSalary {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.progressBarContainer {
+  height: 9px;
+  background: #f1f5f9;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #669bbc 0%, #003049 100%); // Steel Blue to Deep Space Blue
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}

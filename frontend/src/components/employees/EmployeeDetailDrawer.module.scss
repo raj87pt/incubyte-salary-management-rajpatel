@@ -1,0 +1,61 @@
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  background: #1677ff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fullName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.designation {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.salaryHighlight {
+  text-align: right;
+}
+
+.salaryAmount {
+  font-size: 20px;
+  font-weight: 800;
+  color: #059669;
+}
+
+.salaryUsd {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.tabContent {
+  padding-top: 8px;
+}
+
+.tableWrapper {
+  margin-top: 12px;
+}
