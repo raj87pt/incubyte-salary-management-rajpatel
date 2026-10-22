@@ -11,6 +11,7 @@ import {
   GlobalOutlined,
 } from "@ant-design/icons";
 
+import Logo from "@/components/common/Logo";
 import styles from "./AppLayout.module.scss";
 
 const { Header, Content } = Layout;
@@ -51,40 +52,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
       {/* Top Application Navbar */}
       <Header className={styles.navbar}>
         <div className={styles.navContainer}>
-          {/* Brand Identity */}
+          {/* Brand Identity with Logo */}
           <div className={styles.brandGroup} onClick={() => router.push("/")}>
-            <div className={styles.brandIcon}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 2L2 7L12 12L22 7L12 2Z"
-                  fill="url(#brandGrad1)"
-                />
-                <path
-                  d="M2 17L12 22L22 17"
-                  stroke="url(#brandGrad2)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M2 12L12 17L22 12"
-                  stroke="url(#brandGrad1)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <defs>
-                  <linearGradient id="brandGrad1" x1="2" y1="2" x2="22" y2="12" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#3b82f6" />
-                    <stop offset="1" stopColor="#1d4ed8" />
-                  </linearGradient>
-                  <linearGradient id="brandGrad2" x1="2" y1="17" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#10b981" />
-                    <stop offset="1" stopColor="#059669" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+            <Logo size={36} />
             <div className={styles.brandMeta}>
               <span className={styles.brandName}>PayVantage</span>
               <span className={styles.brandOrgBadge}>
