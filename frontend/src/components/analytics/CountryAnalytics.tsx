@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Card, Table, Tag, Skeleton } from "antd";
+import { Card, Table, Tag, Skeleton, Empty } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { CountryStat } from "@/types";
 import styles from "./CountryAnalytics.module.scss";
@@ -103,6 +103,14 @@ export default function CountryAnalytics({
           rowKey="country"
           pagination={{ pageSize: 5, size: "small" }}
           size="middle"
+          locale={{
+            emptyText: (
+              <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description="No regional compensation records found"
+              />
+            ),
+          }}
         />
       </div>
     </Card>

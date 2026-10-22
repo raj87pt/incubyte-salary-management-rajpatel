@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card, Segmented, Skeleton, Tooltip } from "antd";
+import { Card, Segmented, Skeleton, Tooltip, Empty } from "antd";
 import { DepartmentStat } from "@/types";
 import styles from "./DepartmentAnalytics.module.scss";
 
@@ -20,6 +20,20 @@ export default function DepartmentAnalytics({
     return (
       <Card className={styles.deptCard}>
         <Skeleton active paragraph={{ rows: 6 }} />
+      </Card>
+    );
+  }
+
+  if (data.length === 0) {
+    return (
+      <Card className={styles.deptCard}>
+        <div className={styles.chartTitle}>Compensation by Department</div>
+        <div style={{ padding: "48px 0" }}>
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description="No department compensation data recorded"
+          />
+        </div>
       </Card>
     );
   }
