@@ -130,6 +130,7 @@ export default function EmployeeTable({
           <Tooltip title="View full profile & salary audit">
             <Button
               type="text"
+              aria-label="View employee details"
               icon={<EyeOutlined />}
               onClick={() => onView(record)}
             />
@@ -138,6 +139,7 @@ export default function EmployeeTable({
           <Tooltip title="Edit employee details">
             <Button
               type="text"
+              aria-label="Edit employee"
               icon={<EditOutlined />}
               onClick={() => onEdit(record)}
             />
@@ -152,7 +154,12 @@ export default function EmployeeTable({
               cancelText="Cancel"
               okButtonProps={{ danger: true }}
             >
-              <Button type="text" danger icon={<DeleteOutlined />} />
+              <Button
+                type="text"
+                danger
+                aria-label="Delete employee"
+                icon={<DeleteOutlined />}
+              />
             </Popconfirm>
           </Tooltip>
         </div>
