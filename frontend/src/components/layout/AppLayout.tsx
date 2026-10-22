@@ -77,7 +77,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         />
       </Sider>
 
-      <Layout>
+      <Layout className={styles.mainLayout}>
         <Header className={styles.header}>
           <div className={styles.headerLeft} />
 
