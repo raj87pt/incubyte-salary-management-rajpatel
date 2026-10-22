@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: salarybox-backend
+    container_name: payvantage-backend
     ports:
       - "8000:8000"
     environment:
@@ -23,7 +23,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: salarybox-frontend
+    container_name: payvantage-frontend
     ports:
       - "3000:3000"
     environment:

@@ -24,7 +24,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   // Sync collapsed state with localStorage on mount
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("salarybox_sidebar_collapsed");
+      const saved = localStorage.getItem("payvantage_sidebar_collapsed");
       if (saved !== null) {
         setCollapsedState(saved === "true");
       }
@@ -36,7 +36,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const setCollapsed = (val: boolean) => {
     setCollapsedState(val);
     try {
-      localStorage.setItem("salarybox_sidebar_collapsed", String(val));
+      localStorage.setItem("payvantage_sidebar_collapsed", String(val));
     } catch (e) {}
   };
 
@@ -60,51 +60,77 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <SidebarContext.Provider value={{ collapsed, setCollapsed, toggleCollapsed }}>
       <QueryClientProvider client={queryClient}>
-      <ConfigProvider
-        theme={{
-          algorithm: theme.defaultAlgorithm,
-          token: {
-            // Curated Palette integration
-            colorPrimary: "#003049", // Deep Space Blue
-            colorInfo: "#669bbc",    // Steel Blue
-            colorError: "#c1121f",   // Flag Red
-            colorWarning: "#780000", // Molten Lava
-            colorSuccess: "#15803d",
-            borderRadius: 8,
-            fontFamily:
-              "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-          },
-          components: {
-            Button: {
-              primaryColor: "#ffffff",
-              colorPrimary: "#003049",
-              colorPrimaryHover: "#669bbc",
-              colorPrimaryActive: "#002035",
+        <ConfigProvider
+          theme={{
+            algorithm: theme.defaultAlgorithm,
+            token: {
+              // Modern Indigo / Slate Executive Palette
+              colorPrimary: "#4f46e5", // Electric Indigo
+              colorInfo: "#0284c7",    // Slate Sky
+              colorSuccess: "#10b981", // Emerald
+              colorWarning: "#f59e0b", // Amber
+              colorError: "#f43f5e",   // Rose
+              borderRadius: 10,
+              fontFamily:
+                "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+              colorText: "#0f172a",
+              colorTextSecondary: "#475569",
+              colorBorder: "#e2e8f0",
+              colorBgContainer: "#ffffff",
+              colorBgLayout: "#f8fafc",
             },
-            Menu: {
-              darkItemBg: "transparent",
-              darkItemSelectedBg: "#669bbc",
-              darkItemSelectedColor: "#ffffff",
+            components: {
+              Button: {
+                primaryColor: "#ffffff",
+                colorPrimary: "#4f46e5",
+                colorPrimaryHover: "#4338ca",
+                colorPrimaryActive: "#3730a3",
+                borderRadius: 8,
+                controlHeight: 38,
+                fontWeight: 600,
+              },
+              Menu: {
+                darkItemBg: "transparent",
+                darkItemSelectedBg: "#4f46e5",
+                darkItemSelectedColor: "#ffffff",
+                itemBorderRadius: 8,
+              },
+              Table: {
+                headerBg: "#f8fafc",
+                headerColor: "#334155",
+                rowHoverBg: "rgba(79, 70, 229, 0.04)", // Subtle indigo mist hover
+                borderColor: "#f1f5f9",
+                borderRadius: 12,
+              },
+              Card: {
+                headerBg: "#ffffff",
+                borderRadiusLG: 14,
+              },
+              Tag: {
+                defaultBg: "#f1f5f9",
+                defaultColor: "#334155",
+                borderRadiusSM: 6,
+              },
+              Input: {
+                borderRadius: 8,
+                activeBorderColor: "#4f46e5",
+                hoverBorderColor: "#818cf8",
+              },
+              Select: {
+                borderRadius: 8,
+              },
+              Modal: {
+                borderRadiusLG: 16,
+              },
+              Drawer: {
+                borderRadiusLG: 16,
+              },
             },
-            Table: {
-              headerBg: "#f8fafc",
-              headerColor: "#003049",
-              rowHoverBg: "#fdf0d5", // Papaya Whip soft warm row hover!
-              borderColor: "#e2e8f0",
-            },
-            Card: {
-              headerBg: "#ffffff",
-            },
-            Tag: {
-              defaultBg: "#e8f1f5",
-              defaultColor: "#003049",
-            },
-          },
-        }}
-      >
-        {children}
-      </ConfigProvider>
-    </QueryClientProvider>
+          }}
+        >
+          {children}
+        </ConfigProvider>
+      </QueryClientProvider>
     </SidebarContext.Provider>
   );
 }

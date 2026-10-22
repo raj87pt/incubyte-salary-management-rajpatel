@@ -81,7 +81,7 @@ export default function DashboardPage() {
   const handleExportCsv = async () => {
     try {
       message.loading({ content: "Exporting payroll CSV...", key: "exporting" });
-      await api.downloadEmployeesCsv(undefined, "salarybox_payroll_export.csv");
+      await api.downloadEmployeesCsv(undefined, "payvantage_payroll_export.csv");
       message.success({ content: "Payroll CSV exported successfully!", key: "exporting" });
     } catch (e) {
       message.error({ content: "Failed to export payroll CSV.", key: "exporting" });

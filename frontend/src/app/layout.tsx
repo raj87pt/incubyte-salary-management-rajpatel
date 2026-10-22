@@ -7,9 +7,9 @@ import "./globals.scss";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "SalaryBox — Enterprise Salary Management System",
+  title: "PayVantage — Enterprise Compensation Intelligence",
   description:
-    "Web-based salary and compensation management software for managing 10,000+ employees across multiple global jurisdictions.",
+    "Next-generation compensation intelligence and enterprise salary management platform for 10,000+ global employees.",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>

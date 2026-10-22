@@ -1,10 +1,10 @@
 .filterContainer {
   background: #ffffff;
-  padding: 16px 20px;
-  border-radius: 12px;
+  padding: 18px 22px;
+  border-radius: 14px;
   border: 1px solid #e2e8f0;
   margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -13,13 +13,37 @@
 
 .searchInput {
   flex: 1;
-  min-width: 260px;
+  min-width: 280px;
+
+  :global(.ant-input-affix-wrapper) {
+    border-radius: 8px;
+    height: 40px;
+  }
 }
 
 .selectItem {
   min-width: 160px;
+
+  :global(.ant-select-selector) {
+    border-radius: 8px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
 }
 
 .resetBtn {
   color: #64748b;
+  font-weight: 600;
+  border-radius: 8px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #0f172a !important;
+    border-color: #94a3b8 !important;
+  }
 }

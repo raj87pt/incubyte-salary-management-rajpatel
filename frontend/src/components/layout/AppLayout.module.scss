@@ -2,16 +2,30 @@
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
+  background: #f8fafc;
 }
 
 .sider {
-  background: #003049 !important; // Deep Space Blue
-  box-shadow: 2px 0 10px rgba(0, 48, 73, 0.15);
+  background: linear-gradient(180deg, #090d16 0%, #0f172a 100%) !important;
+  box-shadow: 1px 0 20px rgba(15, 23, 42, 0.08);
   height: 100vh !important;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 100;
   flex-shrink: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+
+  :global(.ant-layout-sider-trigger) {
+    background: #090d16 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8 !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #1e293b !important;
+      color: #ffffff !important;
+    }
+  }
 }
 
 .mainLayout {
@@ -24,26 +38,26 @@
 }
 
 .brandLogo {
-  height: 64px;
+  height: 70px;
   display: flex;
   align-items: center;
   padding: 0 20px;
   gap: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .logoIcon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #c1121f 0%, #780000 100%); // Flag Red to Molten Lava
-  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fdf0d5; // Papaya Whip text
-  font-weight: 800;
-  font-size: 19px;
-  box-shadow: 0 4px 12px rgba(193, 18, 31, 0.4);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+  flex-shrink: 0;
 }
 
 .brandText {
@@ -53,18 +67,22 @@
 
 .brandTitle {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 800;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
   line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .brandSubtitle {
-  color: #669bbc; // Steel Blue
+  color: #818cf8;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
+  margin-top: 1px;
 }
 
 .brandLogoCollapsed {
@@ -73,120 +91,209 @@
 }
 
 .menuContainer {
-  margin-top: 16px;
+  margin-top: 18px;
   background: transparent !important;
   border-right: none !important;
   border-inline-end: none !important;
-  padding: 0 10px !important;
+  padding: 0 12px !important;
 
   :global(.ant-menu-item) {
     width: 100% !important;
+    height: 44px !important;
+    line-height: 44px !important;
     margin: 6px 0 !important;
     margin-inline: 0 !important;
     padding-inline: 14px !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     box-sizing: border-box !important;
-    color: #e2e8f0 !important;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    color: #94a3b8 !important;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: -0.1px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       color: #ffffff !important;
-      background: rgba(102, 155, 188, 0.2) !important; // Steel Blue soft hover
+      background: rgba(255, 255, 255, 0.06) !important;
+      transform: translateX(2px);
     }
   }
 
   :global(.ant-menu-item-selected) {
-    background: #669bbc !important; // Steel Blue active
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%) !important;
     color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
     font-weight: 700;
-    box-shadow: 0 3px 10px rgba(102, 155, 188, 0.4);
-  }
-}
 
-.menuCollapsed,
-:global(.ant-menu-inline-collapsed) {
-  padding: 0 !important;
-
-  :global(.ant-menu-item) {
-    width: 44px !important;
-    height: 44px !important;
-    line-height: 44px !important;
-    margin: 8px auto !important;
-    padding: 0 !important;
-    padding-inline: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 10px !important;
-
-    :global(.ant-menu-item-icon) {
-      font-size: 18px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      min-width: unset !important;
+    .menuIcon {
+      color: #ffffff !important;
     }
   }
 }
 
-.header {
-  background: #ffffff !important;
-  padding: 0 24px !important;
-  height: 64px !important;
-  line-height: normal !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  border-bottom: 1px solid #e2e8f0;
+.menuIcon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.menuCollapsed {
+  padding: 0 8px !important;
+
+  :global(.ant-menu-item) {
+    padding: 0 !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+.sidebarFooter {
+  position: absolute;
+  bottom: 60px;
+  left: 12px;
+  right: 12px;
+}
+
+.systemStatusPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.statusPulse {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
   flex-shrink: 0;
-  z-index: 99;
-  box-shadow: 0 1px 3px rgba(0, 48, 73, 0.04);
+  animation: pulseAnim 2s infinite;
+}
+
+@keyframes pulseAnim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.statusInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.statusSub {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.header {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px);
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.02);
+  z-index: 10;
+  flex-shrink: 0;
 }
 
 .headerLeft {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+}
+
+.environmentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  border: 1px solid #e2e8f0;
 }
 
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .userBadge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  line-height: normal;
+  gap: 12px;
+  padding: 4px 10px;
+  border-radius: 28px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #f1f5f9;
+  }
+}
+
+.userAvatar {
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
 }
 
 .userName {
   font-size: 13px;
   font-weight: 700;
-  color: #003049; // Deep Space Blue
+  color: #0f172a;
   line-height: 1.2;
 }
 
 .userRole {
   font-size: 11px;
-  color: #669bbc; // Steel Blue
-  font-weight: 600;
-  line-height: 1.2;
+  color: #64748b;
+  font-weight: 500;
 }
 
-.mainContent {
+.contentArea {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 24px 28px;
-  background: #f8fafc;
+  height: calc(100vh - 64px);
+  position: relative;
+}
+
+.contentInner {
+  padding: 24px 28px 40px;
+  max-width: 1540px;
+  margin: 0 auto;
 }

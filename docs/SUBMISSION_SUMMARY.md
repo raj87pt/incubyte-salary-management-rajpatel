@@ -1,4 +1,4 @@
-# Assessment Submission Summary — ACME SalaryBox
+# Assessment Submission Summary — ACME PayVantage
 
 **Candidate**: Raj Patel  
 **Repository**: Incubyte Assessment (`incubyte-salary-management-rajpatel`)  
@@ -12,7 +12,7 @@
 | :--- | :--- | :--- |
 | **1. Requirements Document** | [`docs/REQUIREMENTS.md`](./REQUIREMENTS.md) | **Completed**: One-page specification outlining goals, scope, HR persona, and deliberate exclusions with justification. |
 | **2. Backend Framework & Relational DB** | [`backend/app/`](../backend/app/) | **Completed**: Python 3.12 + FastAPI + async SQLAlchemy with SQLite, RFC-7807 error handling, and OpenAPI/Swagger auto-docs. |
-| **3. UI Framework & Component Library** | [`frontend/src/`](../frontend/src/) | **Completed**: Next.js App Router + Ant Design + SCSS Modules using executive color palette (*Deep Space Blue*, *Steel Blue*, *Papaya Whip*, *Flag Red*). |
+| **3. UI Framework & Component Library** | [`frontend/src/`](../frontend/src/) | **Completed**: Next.js App Router + Ant Design + SCSS Modules using executive modern palette (*Electric Indigo*, *Slate Obsidian*, *Emerald*, *Cyan*). |
 | **4. 10,000 Employee Seed Script** | [`backend/seed.py`](../backend/seed.py) | **Completed**: Fast bulk insertion generated **10,000 employees + 2,497 salary revisions + 5,634 payroll slips in 2.87 seconds**. |
 | **5. Test-Driven Development (TDD)** | [`backend/tests/`](../backend/tests/) & [`frontend/src/test/`](../frontend/src/test/) | **Completed**: **16 backend pytest tests passing in 0.76s** and **8 frontend vitest tests passing in 5.78s** (100% green). |
 | **6. Incremental Conventional Commits** | `git log --oneline` | **Completed**: Clean incremental commit history following the [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) standard. |

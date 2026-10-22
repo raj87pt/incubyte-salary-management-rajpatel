@@ -1,8 +1,10 @@
 .histoCard {
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 48, 73, 0.05);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
   border: 1px solid #e2e8f0;
   height: 100%;
+  transition: all 0.2s ease;
 
   :global(.ant-card-body) {
     display: flex;
@@ -19,27 +21,29 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
-  color: #003049; // Deep Space Blue
+  color: #0f172a;
+  letter-spacing: -0.3px;
 }
 
 .subtitle {
   font-size: 13px;
   color: #64748b;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .totalBadge {
-  font-size: 11px;
-  color: #003049;
-  background: #f1f5f9;
-  padding: 4px 10px;
-  border-radius: 12px;
+  font-size: 11.5px;
+  color: #4f46e5;
+  background: #eef2ff;
+  border: 1px solid #e0e7ff;
+  padding: 4px 12px;
+  border-radius: 20px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -51,7 +55,7 @@
   flex-direction: column;
   justify-content: flex-end;
   min-height: 230px;
-  margin: 12px 0 16px;
+  margin: 12px 0 18px;
 }
 
 .gridLines {
@@ -68,7 +72,7 @@
 }
 
 .gridLine {
-  border-bottom: 1px dashed #edf2f7;
+  border-bottom: 1px dashed #f1f5f9;
   width: 100%;
 }
 
@@ -77,7 +81,7 @@
   z-index: 1;
   display: flex;
   align-items: flex-end;
-  gap: 12px;
+  gap: 14px;
   height: 100%;
   min-height: 220px;
 }
@@ -89,29 +93,30 @@
   align-items: center;
   height: 100%;
   justify-content: flex-end;
-  gap: 6px;
+  gap: 8px;
 }
 
 .barStats {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1px;
+  gap: 2px;
 }
 
 .barValue {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 800;
-  color: #003049;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
 }
 
 .peakValue {
-  color: #c1121f; // Flag Red
+  color: #0284c7;
   font-weight: 900;
 }
 
 .barShare {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
   color: #64748b;
 }
@@ -127,24 +132,31 @@
 .barPillar {
   width: 100%;
   max-width: 48px;
-  border-radius: 6px 6px 0 0;
-  background: linear-gradient(180deg, #669bbc 0%, #003049 100%); // Steel Blue to Deep Space Blue
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, #818cf8 0%, #4f46e5 100%);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
 
   &:hover {
-    background: linear-gradient(180deg, #c1121f 0%, #780000 100%); // Flag Red to Molten Lava
-    box-shadow: 0 4px 14px rgba(193, 18, 31, 0.3);
+    background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+    transform: scaleY(1.02);
   }
 }
 
 .peakPillar {
-  background: linear-gradient(180deg, #5786a3 0%, #003049 100%);
-  box-shadow: 0 2px 8px rgba(0, 48, 73, 0.15);
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+
+  &:hover {
+    background: linear-gradient(180deg, #22d3ee 0%, #0891b2 100%);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+  }
 }
 
 .barLabel {
-  font-size: 11px;
+  font-size: 11.5px;
   color: #475569;
   text-align: center;
   white-space: nowrap;
@@ -167,22 +179,22 @@
 .metricCard {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 10px 14px;
+  border-radius: 10px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
   transition: all 0.2s ease;
 
   &:hover {
     border-color: #cbd5e1;
     background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0, 48, 73, 0.04);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
   }
 }
 
 .metricLabel {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   color: #64748b;
   text-transform: uppercase;
@@ -190,14 +202,13 @@
 }
 
 .metricValue {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
-  color: #003049; // Deep Space Blue
-  letter-spacing: -0.2px;
+  color: #0f172a;
 }
 
-.metricSub {
+.metricDetail {
   font-size: 11px;
-  font-weight: 500;
   color: #64748b;
+  font-weight: 500;
 }
