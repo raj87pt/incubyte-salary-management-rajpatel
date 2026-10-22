@@ -1,10 +1,49 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { ConfigProvider, theme } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+interface SidebarContextType {
+  collapsed: boolean;
+  setCollapsed: (val: boolean) => void;
+  toggleCollapsed: () => void;
+}
+
+const SidebarContext = createContext<SidebarContextType>({
+  collapsed: false,
+  setCollapsed: () => {},
+  toggleCollapsed: () => {},
+});
+
+export const useSidebar = () => useContext(SidebarContext);
+
 export default function Providers({ children }: { children: React.ReactNode }) {
+  const [collapsed, setCollapsedState] = useState(false);
+
+  // Sync collapsed state with localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("salarybox_sidebar_collapsed");
+      if (saved !== null) {
+        setCollapsedState(saved === "true");
+      }
+    } catch (e) {
+      // localStorage may fail in restricted environments
+    }
+  }, []);
+
+  const setCollapsed = (val: boolean) => {
+    setCollapsedState(val);
+    try {
+      localStorage.setItem("salarybox_sidebar_collapsed", String(val));
+    } catch (e) {}
+  };
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -19,7 +58,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <SidebarContext.Provider value={{ collapsed, setCollapsed, toggleCollapsed }}>
+      <QueryClientProvider client={queryClient}>
       <ConfigProvider
         theme={{
           algorithm: theme.defaultAlgorithm,
@@ -65,5 +105,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         {children}
       </ConfigProvider>
     </QueryClientProvider>
+    </SidebarContext.Provider>
   );
 }

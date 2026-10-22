@@ -67,14 +67,25 @@
   letter-spacing: 0.6px;
 }
 
+.brandLogoCollapsed {
+  padding: 0 !important;
+  justify-content: center !important;
+}
+
 .menuContainer {
   margin-top: 16px;
   background: transparent !important;
   border-right: none !important;
+  border-inline-end: none !important;
+  padding: 0 10px !important;
 
   :global(.ant-menu-item) {
-    margin: 6px 12px !important;
+    width: 100% !important;
+    margin: 6px 0 !important;
+    margin-inline: 0 !important;
+    padding-inline: 14px !important;
     border-radius: 8px !important;
+    box-sizing: border-box !important;
     color: #e2e8f0 !important;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -90,6 +101,34 @@
     color: #ffffff !important;
     font-weight: 700;
     box-shadow: 0 3px 10px rgba(102, 155, 188, 0.4);
+  }
+}
+
+.menuCollapsed,
+:global(.ant-menu-inline-collapsed) {
+  padding: 0 !important;
+
+  :global(.ant-menu-item) {
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    margin: 8px auto !important;
+    padding: 0 !important;
+    padding-inline: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 10px !important;
+
+    :global(.ant-menu-item-icon) {
+      font-size: 18px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: unset !important;
+    }
   }
 }
 

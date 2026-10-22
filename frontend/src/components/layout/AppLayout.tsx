@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Layout, Menu, Avatar } from "antd";
 import {
@@ -10,6 +10,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
+import { useSidebar } from "@/app/providers";
 import styles from "./AppLayout.module.scss";
 
 const { Header, Sider, Content } = Layout;
@@ -21,7 +22,7 @@ interface AppLayoutProps {
 export default function AppLayout({ children }: AppLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
+  const { collapsed, setCollapsed } = useSidebar();
 
   const menuItems = [
     {
@@ -54,10 +55,14 @@ export default function AppLayout({ children }: AppLayoutProps) {
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
-        width={260}
+        width={275}
         className={styles.sider}
       >
-        <div className={styles.brandLogo}>
+        <div
+          className={`${styles.brandLogo} ${
+            collapsed ? styles.brandLogoCollapsed : ""
+          }`}
+        >
           <div className={styles.logoIcon}>$</div>
           {!collapsed && (
             <div className={styles.brandText}>
@@ -73,7 +78,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
           selectedKeys={[selectedKey]}
           items={menuItems}
           onClick={handleMenuClick}
-          className={styles.menuContainer}
+          className={`${styles.menuContainer} ${
+            collapsed ? styles.menuCollapsed : ""
+          }`}
         />
       </Sider>
 
