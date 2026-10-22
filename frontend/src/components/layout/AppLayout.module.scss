@@ -259,6 +259,12 @@
 }
 
 /* Responsive Media Queries */
+@media (max-width: 1150px) {
+  .statusChip {
+    display: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .navbar {
     padding: 0 20px !important;
@@ -269,21 +275,11 @@
   }
 }
 
-@media (max-width: 900px) {
-  .statusChip {
-    display: none;
-  }
-
-  .profileRole {
-    display: none;
-  }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 960px) {
   .navbar {
     height: auto !important;
     min-height: 60px;
-    padding: 10px 16px 8px !important;
+    padding: 10px 16px 10px !important;
   }
 
   .navContainer {
@@ -300,41 +296,48 @@
     gap: 8px;
   }
 
+  .profileRole {
+    display: none;
+  }
+
   .navLinks {
     order: 3;
     width: 100%;
     height: 42px;
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    background: #f1f5f9;
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
   }
 
   .navItem {
-    padding: 6px 12px;
+    width: 100%;
+    justify-content: center;
+    padding: 0 6px;
     height: 36px;
     font-size: 13px;
+    border-radius: 8px;
+    gap: 6px;
     white-space: nowrap;
-    flex-shrink: 0;
+    color: #475569;
+  }
+
+  .navItemActive {
+    background: #ffffff !important;
+    color: #1e3a8a !important;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04) !important;
   }
 
   .activeIndicator {
-    bottom: -4px;
-    left: 10px;
-    right: 10px;
-    height: 2.5px;
-  }
-
-  .profileInfo {
     display: none;
   }
 
   .contentWrapper {
-    height: calc(100vh - 110px);
+    height: calc(100vh - 114px);
   }
 
   .contentInner {
@@ -342,12 +345,41 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
+  .navbar {
+    padding: 8px 12px 8px !important;
+  }
+
   .brandOrgBadge {
     display: none;
   }
 
   .brandName {
     font-size: 16px;
+  }
+
+  .profileInfo {
+    display: none;
+  }
+
+  .navItem {
+    font-size: 12px;
+    gap: 5px;
+    padding: 0 2px;
+  }
+
+  .navItemIcon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navItem {
+    font-size: 11px;
+    gap: 3px;
+  }
+
+  .navItemIcon {
+    font-size: 13px;
   }
 }
