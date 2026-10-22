@@ -125,7 +125,7 @@ export default function ImportExportPage() {
         </div>
 
         <Alert
-          message="Excel Workflow Replacement"
+          title="Excel Workflow Replacement"
           description="This tool directly replaces manual spreadsheet management. All uploaded records are validated against schema constraints and automatically normalized to the base currency (USD)."
           type="info"
           showIcon

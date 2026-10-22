@@ -1,7 +1,10 @@
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Providers from "./providers";
 import "./globals.scss";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "SalaryBox — Enterprise Salary Management System",
@@ -33,7 +36,9 @@ export default function RootLayout({
       </head>
       <body>
         <AntdRegistry>
-          <Providers>{children}</Providers>
+          <Providers>
+            <Suspense fallback={null}>{children}</Suspense>
+          </Providers>
         </AntdRegistry>
       </body>
     </html>

@@ -60,10 +60,10 @@ export default function EmployeeDetailDrawer({
     <Drawer
       title="Employee Profile & Compensation Record"
       placement="right"
-      width={720}
+      size={720}
       onClose={onClose}
       open={open}
-      destroyOnClose
+      destroyOnHidden
     >
       {isLoading || !employee ? (
         <Skeleton active avatar paragraph={{ rows: 8 }} />

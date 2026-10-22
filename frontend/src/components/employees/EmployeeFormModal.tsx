@@ -144,7 +144,7 @@ export default function EmployeeFormModal({
       onOk={() => form.submit()}
       confirmLoading={submitting}
       width={720}
-      destroyOnClose
+      destroyOnHidden
     >
       <Form
         form={form}
@@ -319,7 +319,7 @@ export default function EmployeeFormModal({
         {isEdit && isSalaryChanged && (
           <div className={styles.fullWidth} style={{ marginTop: 12 }}>
             <Alert
-              message="Salary Modification Detected"
+              title="Salary Modification Detected"
               description="A historical salary revision audit record will be logged automatically. Please state the justification for this change."
               type="info"
               showIcon
