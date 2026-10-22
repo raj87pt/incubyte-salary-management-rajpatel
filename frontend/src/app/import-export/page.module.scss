@@ -20,7 +20,7 @@
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(180deg, #4f46e5 0%, #06b6d4 100%);
+    background: linear-gradient(180deg, #1e3a8a 0%, #059669 100%);
   }
 }
 
@@ -87,13 +87,13 @@
     transition: all 0.25s ease !important;
 
     &:hover {
-      border-color: #6366f1 !important;
-      background: #eef2ff !important;
+      border-color: #1e3a8a !important;
+      background: #eff6ff !important;
     }
   }
 
   :global(.ant-upload-drag-icon .anticon) {
-    color: #4f46e5 !important;
+    color: #1e3a8a !important;
     font-size: 48px !important;
   }
 }

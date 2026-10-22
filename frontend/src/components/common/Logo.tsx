@@ -31,7 +31,7 @@ export default function Logo({ size = 36, className }: LogoProps) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="24" cy="11" r="2.5" fill="#38BDF8" />
+      <circle cx="24" cy="11" r="2.5" fill="#D1FAE5" />
       <defs>
         <linearGradient
           id="pv_logo_grad"
@@ -41,8 +41,8 @@ export default function Logo({ size = 36, className }: LogoProps) {
           y2="48"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#2563EB" />
-          <stop offset="0.5" stopColor="#1D4ED8" />
+          <stop stopColor="#1E3A8A" />
+          <stop offset="0.6" stopColor="#172554" />
           <stop offset="1" stopColor="#0F172A" />
         </linearGradient>
         <linearGradient
@@ -53,8 +53,8 @@ export default function Logo({ size = 36, className }: LogoProps) {
           y2="31"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#34D399" />
-          <stop offset="1" stopColor="#10B981" />
+          <stop stopColor="#10B981" />
+          <stop offset="1" stopColor="#059669" />
         </linearGradient>
       </defs>
     </svg>

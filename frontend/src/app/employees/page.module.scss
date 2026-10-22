@@ -53,13 +53,13 @@
   }
 
   :global(.ant-btn-primary) {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%) !important;
     border: none !important;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.28) !important;
 
     &:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%) !important;
+      box-shadow: 0 4px 14px rgba(30, 58, 138, 0.38) !important;
     }
   }
 }

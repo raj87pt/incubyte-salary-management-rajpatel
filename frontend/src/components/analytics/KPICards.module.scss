@@ -51,11 +51,11 @@
 }
 
 .heroCard {
-  background: linear-gradient(145deg, #ffffff 0%, #f6faff 60%, #edf6ff 100%);
-  border-color: #bfdbfe;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #eff6ff 100%);
+  border-color: #cbd5e1;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.04), 0 10px 28px -4px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.04), 0 10px 24px -4px rgba(30, 58, 138, 0.08);
 
   &::before {
     content: "";
@@ -64,7 +64,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #2563eb, #06b6d4 60%, #10b981 100%);
+    background: linear-gradient(90deg, #1e3a8a, #059669);
   }
 
   :global(.ant-card-body) {
@@ -103,8 +103,9 @@
 .verifiedTag {
   font-size: 11px;
   font-weight: 700;
-  color: #0284c7;
-  background: #e0f2fe;
+  color: #059669;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
   padding: 2px 8px;
   border-radius: 12px;
   display: inline-flex;
@@ -125,12 +126,12 @@
 
 .heroIcon {
   background: #eff6ff;
-  color: #2563eb;
+  color: #1e3a8a;
   border: 1px solid #bfdbfe;
 }
 
 .successIcon {
-  background: #ecfdf5;
+  background: #d1fae5;
   color: #059669;
   border: 1px solid #a7f3d0;
 }
@@ -142,9 +143,9 @@
 }
 
 .skyIcon {
-  background: #f0f9ff;
-  color: #0284c7;
-  border: 1px solid #bae6fd;
+  background: #eff6ff;
+  color: #1e3a8a;
+  border: 1px solid #bfdbfe;
 }
 
 .heroBody {
@@ -201,13 +202,13 @@
 
   &:hover {
     background: #ffffff;
-    border-color: #60a5fa;
+    border-color: #93c5fd;
     transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.14);
+    box-shadow: 0 3px 8px rgba(30, 58, 138, 0.12);
   }
 
   strong {
-    color: #2563eb;
+    color: #1e3a8a;
     font-weight: 800;
     margin-right: 4px;
   }
@@ -221,7 +222,7 @@
   font-size: 11px;
   font-weight: 700;
   color: #059669;
-  background: #ecfdf5;
+  background: #d1fae5;
   border: 1px solid #a7f3d0;
   padding: 3px 8px;
   border-radius: 6px;

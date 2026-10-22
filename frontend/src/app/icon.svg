@@ -14,7 +14,7 @@
     stroke-linecap="round"
     stroke-linejoin="round"
   />
-  <circle cx="24" cy="11" r="2.5" fill="#38BDF8" />
+  <circle cx="24" cy="11" r="2.5" fill="#D1FAE5" />
   <defs>
     <linearGradient
       id="pv_logo_grad"
@@ -24,8 +24,8 @@
       y2="48"
       gradientUnits="userSpaceOnUse"
     >
-      <stop stop-color="#2563EB" />
-      <stop offset="0.5" stop-color="#1D4ED8" />
+      <stop stop-color="#1E3A8A" />
+      <stop offset="0.6" stop-color="#172554" />
       <stop offset="1" stop-color="#0F172A" />
     </linearGradient>
     <linearGradient
@@ -36,8 +36,8 @@
       y2="31"
       gradientUnits="userSpaceOnUse"
     >
-      <stop stop-color="#34D399" />
-      <stop offset="1" stop-color="#10B981" />
+      <stop stop-color="#10B981" />
+      <stop offset="1" stop-color="#059669" />
     </linearGradient>
   </defs>
 </svg>

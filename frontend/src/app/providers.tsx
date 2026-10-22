@@ -24,27 +24,27 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         theme={{
           algorithm: theme.defaultAlgorithm,
           token: {
-            // Modern Enterprise Fintech Palette
-            colorPrimary: "#2563eb", // Royal Sapphire Blue
-            colorInfo: "#0284c7",    // Sky
-            colorSuccess: "#059669", // Emerald
-            colorWarning: "#d97706", // Amber
-            colorError: "#e11d48",   // Rose Crimson
+            // Executive Corporate Palette
+            colorPrimary: "#1e3a8a", // Deep Navy
+            colorInfo: "#0284c7",    // Slate Blue
+            colorSuccess: "#059669", // Rich Emerald Green
+            colorWarning: "#d97706", // Warm Amber
+            colorError: "#dc2626",   // Crimson
             borderRadius: 10,
             fontFamily:
               "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-            colorText: "#0f172a",
+            colorText: "#0f172a",    // Dark Charcoal
             colorTextSecondary: "#475569",
             colorBorder: "#e2e8f0",
-            colorBgContainer: "#ffffff",
-            colorBgLayout: "#f8fafc",
+            colorBgContainer: "#ffffff", // Pure White
+            colorBgLayout: "#f1f5f9",    // Cool Grey
           },
           components: {
             Button: {
               primaryColor: "#ffffff",
-              colorPrimary: "#2563eb",
-              colorPrimaryHover: "#1d4ed8",
-              colorPrimaryActive: "#1e40af",
+              colorPrimary: "#1e3a8a",
+              colorPrimaryHover: "#1e40af",
+              colorPrimaryActive: "#172554",
               borderRadius: 8,
               controlHeight: 38,
               fontWeight: 600,
@@ -67,8 +67,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             },
             Input: {
               borderRadius: 8,
-              activeBorderColor: "#2563eb",
-              hoverBorderColor: "#60a5fa",
+              activeBorderColor: "#1e3a8a",
+              hoverBorderColor: "#3b82f6",
             },
             Select: {
               borderRadius: 8,
