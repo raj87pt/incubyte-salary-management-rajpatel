@@ -58,7 +58,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
             <div className={styles.brandMeta}>
               <span className={styles.brandName}>PayVantage</span>
               <span className={styles.brandOrgBadge}>
-                ACME Corp <span className={styles.brandDot}>•</span> Global
+                Enterprise Suite <span className={styles.brandDot}>•</span> Global
               </span>
             </div>
           </div>

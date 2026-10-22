@@ -56,7 +56,7 @@ export default function ImportExportPage() {
       "EMP-EXAMPLE-1",
       "Alex",
       "Morgan",
-      "alex.m@acme.org",
+      "alex.m@payvantage.corp",
       "Engineering",
       "Staff Engineer",
       "United States",
@@ -88,7 +88,7 @@ export default function ImportExportPage() {
   const handleDownloadFullExport = async () => {
     try {
       message.loading({ content: "Generating complete CSV export...", key: "exporting" });
-      await api.downloadEmployeesCsv(undefined, "acme_employees_database.csv");
+      await api.downloadEmployeesCsv(undefined, "payvantage_employees_database.csv");
       message.success({ content: "CSV database export completed!", key: "exporting" });
     } catch (e) {
       message.error({ content: "Failed to download CSV export.", key: "exporting" });

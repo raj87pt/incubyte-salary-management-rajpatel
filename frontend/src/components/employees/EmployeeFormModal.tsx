@@ -198,7 +198,7 @@ export default function EmployeeFormModal({
             ]}
             className={styles.col4}
           >
-            <Input placeholder="jane.doe@acme.org" />
+            <Input placeholder="jane.doe@payvantage.corp" />
           </Form.Item>
 
           <Form.Item

@@ -113,7 +113,7 @@ export default function DashboardPage() {
         <div className={styles.commandBar}>
           <div className={styles.commandLeft}>
             <div className={styles.breadcrumbTag}>
-              <span className={styles.dotIndicator} /> ACME Global Human Resources · Total Rewards
+              <span className={styles.dotIndicator} /> PayVantage Global Human Resources · Total Rewards
             </div>
             <h1 className={styles.mainTitle}>Compensation & Headcount Analytics</h1>
             <p className={styles.subtitle}>
